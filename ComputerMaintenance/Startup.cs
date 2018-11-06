@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using ComputerMaintenance.Models;
 
 namespace ComputerMaintenance
 {
@@ -33,6 +35,10 @@ namespace ComputerMaintenance
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<ComputerMaintenanceContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("ComputerMaintenanceContext"), builder =>
+                    builder.MigrationsAssembly("ComputerMaintenance")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
