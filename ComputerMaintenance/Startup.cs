@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ComputerMaintenance.Models;
+using ComputerMaintenance.Services;
 
 namespace ComputerMaintenance
 {
@@ -39,6 +40,8 @@ namespace ComputerMaintenance
             services.AddDbContext<ComputerMaintenanceContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("ComputerMaintenanceContext"), builder =>
                     builder.MigrationsAssembly("ComputerMaintenance")));
+
+            services.AddScoped<MaintenanceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
