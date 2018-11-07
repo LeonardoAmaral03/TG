@@ -25,5 +25,18 @@ namespace ComputerMaintenance.Controllers
 
             return View(list);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Maintenance maintenance)
+        {
+            await _maintenanceService.InsertAsync(maintenance);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

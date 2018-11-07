@@ -20,5 +20,11 @@ namespace ComputerMaintenance.Services
         {
             return await _context.Maintenance.ToListAsync();
         }
+
+        public async Task InsertAsync(Maintenance obj)
+        {
+            _context.Add(obj);
+            await _context.SaveChangesAsync();
+        }
     }
 }

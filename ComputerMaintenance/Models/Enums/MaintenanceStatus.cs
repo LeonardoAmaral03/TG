@@ -2,7 +2,7 @@
 {
     public enum MaintenanceStatus : int
     {
-        Performed = 0,
-        NotPerformed = 1
+        NotPerformed = 0,
+        Performed = 1
     }
 }
