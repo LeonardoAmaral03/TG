@@ -3,7 +3,6 @@
     public enum MaintenanceStatus : int
     {
         Performed = 0,
-        Delayed = 1,
-        Pending = 2
+        NotPerformed = 1
     }
 }
